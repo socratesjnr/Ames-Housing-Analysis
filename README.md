@@ -108,7 +108,7 @@ Ames Housing Analysis/
 I’m a data enthusiast exploring how real-world problems can be solved with clean, thoughtful, and purposeful data. This project is part of my growing portfolio as I transition into data science from a background in guidance and counseling — blending **human understanding with analytical power**.
 
 📬 **Let’s connect!**  
-- LinkedIn: [[Your Profile](https://linkedin.com](https://www.linkedin.com/in/oluwaseyiadaramola/))  
+- LinkedIn: [[My Profile](https://linkedin.com](https://www.linkedin.com/in/oluwaseyiadaramola/))  
 - Email: oluwaseyitadaramola@gmail.com
 
 ---
