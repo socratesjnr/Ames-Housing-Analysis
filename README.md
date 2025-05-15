@@ -1,77 +1,71 @@
-# 🏡 Ames Housing Dataset – A Data Cleaning & EDA Showcase
+# 🏡 Ames Housing Data Analysis
 
-Welcome to my in-depth analysis and preprocessing of the **Ames Housing Dataset** – a modern housing dataset that goes beyond the classic Boston Housing dataset. This project showcases my ability to clean real-world data, handle missing values thoughtfully, engineer meaningful features, and explore data-driven patterns — all essential steps before any machine learning or predictive modeling.
+This project focuses on performing a comprehensive **data cleaning and exploratory data analysis (EDA)** on the popular **Ames Housing Dataset**. The main goal was to prepare the dataset for machine learning tasks by handling missing values, identifying outliers, correcting data types, and engineering features.
 
-> 💡 **Why this project?**  
-> I chose this dataset to build a solid foundation in data preprocessing and EDA, focusing on understanding the structure of a rich housing dataset and preparing it for future modeling.
-
+> **Tool Used:** Python (Pandas, NumPy, Matplotlib, Seaborn, Statsmodels)  
+> **Dataset Source:** [Ames Housing Dataset on Kaggle](https://www.kaggle.com/datasets/shashanknecrothapa/ames-housing-dataset)
+> **Metadata and Documentation:** [Documentation Link](https://jse.amstat.org/v19n3/decock/DataDocumentation.txt)
 ---
 
 ## 📌 Objectives
 
-- ✅ Understand the structure of the Ames housing data
-- 🧹 Clean and preprocess the dataset thoroughly
-- 📊 Perform exploratory data analysis (EDA) to uncover patterns and outliers
-- 📁 Prepare the dataset for use in regression modeling or other ML tasks
+- 🧼 Load and explore the Ames Housing dataset.
+- 🔍 Identify and remove outliers.
+- 🧮 Detect and handle missing values.
+- 🔁 Transform and format categorical and numerical features.
+- 📊 Prepare the dataset for further statistical analysis or machine learning modeling.
 
 ---
 
-## 📂 Dataset Overview
+## 🔄 Workflow Overview
 
-The [Ames Housing Dataset](https://www.kaggle.com/datasets/shashanknecrothapa/ames-housing-dataset) contains **2,930 observations** and **80 features** describing residential homes in Ames, Iowa.
+### 1. **Data Loading & Initial Inspection**
+- Loaded the dataset using `pandas.read_csv()`.
+- Displayed dataset structure with `.info()`, `.shape`, `.head()`, and `.tail()`.
+- Used `.describe()` to get basic statistics of the numerical features.
 
-It includes:
-- **Nominal features** like `Neighborhood`, `RoofStyle`, etc.
-- **Ordinal features** like `ExterQual`, `KitchenQual`, etc.
-- **Continuous features** like `GrLivArea`, `LotFrontage`, etc.
-- **Target**: `SalePrice`
+### 2. **Outlier Detection**
+- Noticed five unusual sales records with large `Gr Liv Area` (> 4000 sq ft).
+- Removed those outliers to avoid bias in further analysis.
 
----
+### 3. **Data Type Fixes**
+- Converted `MSSubClass` from integer to string (e.g., "20" → "MSC20") for categorical interpretation.
 
-## 🛠️ Tools Used
+### 4. **Missing Value Treatment**
+- Identified missing values using:
+  - `.isnull().sum()`  
+  - Percentage of missing values per column
+- Dropped columns with over **50% missing values**.
+- Handled remaining missing data using appropriate strategies:
+  - Replacing with `'None'` for nominal columns
+  - Using mode/median for ordinal and numerical columns
+  - Correlating `Garage Type` and `Garage Area` to infer missing values
 
-- **Python**
-  - `Pandas` & `NumPy` for data wrangling
-  - `Matplotlib` & `Seaborn` for visualization
-  - `Statsmodels` for statistical inspection
-- **Google Colab** for notebook execution and file handling
-
----
-
-## 🚀 Step-by-Step Workflow
-
-### 1. Data Loading & Inspection
-- Dataset loaded from Google Drive and verified using `.head()`, `.tail()`, `.info()` and `.describe()`.
-- Initial checks for data shape and variable types.
-
-### 2. Cleaning the Data
-- Removed extreme outliers in `GrLivArea` that had unusual sales prices.
-- Converted `MSSubClass` to string to better reflect its categorical nature.
-- Handled missing values by:
-  - Dropping features with >50% missing
-  - Filling others based on context (mode, median, or 'None')
-- Used helper functions to streamline imputation.
-
-### 3. Feature Understanding
-- Identified numerical vs categorical features.
-- Separated ordinal and nominal variables for tailored treatment.
-- Re-categorized and renamed columns where necessary.
-
-### 4. Exploratory Data Analysis
-- Used visualizations to understand:
-  - Sale price distribution
-  - Correlation between variables
-  - Outliers that needed treatment
-- Observed patterns between `SalePrice` and variables like `GrLivArea`, `OverallQual`, and `Neighborhood`.
+### 5. **Feature Engineering**
+- Created helper functions to automate repetitive fill-replace tasks.
+- Standardized column formats (e.g., added dollar symbols, removed decimals).
 
 ---
 
-## 🔍 Key Takeaways
+## 🧠 Key Insights
 
-- 🏠 Outliers can significantly affect statistical summaries and model performance.
-- 🧼 Proper handling of missing data is critical for unbiased modeling.
-- 🔀 Converting feature types (e.g., numerical to categorical) prevents misleading assumptions by models.
-- 📉 Some high-missing features, although interesting, are better dropped to maintain data quality.
+- Some homes had unusual values (extremely high square footage and low prices) that skewed the dataset — removed them for better modeling accuracy.
+- Many columns had missing values that were not random — requiring different treatment strategies for categorical vs numerical data.
+- Converting numerical codes to categorical strings (like `MSSubClass`) improves interpretability and modeling outcomes.
+- A cleaner, more structured dataset was achieved, ready for downstream tasks like regression modeling or classification.
+
+---
+
+## 🧰 Technologies Used
+
+| Tool         | Purpose                             |
+|--------------|-------------------------------------|
+| **Pandas**   | Data manipulation & cleaning        |
+| **NumPy**    | Numerical computation               |
+| **Matplotlib / Seaborn** | Data visualization     |
+| **Statsmodels** | Optional statistical analysis    |
+
+---
 
 ---
 
